@@ -1,0 +1,171 @@
+AOSPA Calcite (Android 17) - Unofficial
+Xiaomi POCO F5 (marble)
+Maintainer: ShadeDark
+
+==================================================
+🚀 05 October 2026
+==================================================
+
+🔄 CLO Update
+
+• Synced system repositories with LA.QSSI.17.0.r1-11300-qssi.0.
+
+🖥 Display
+
+• Fixed the black glow issue across all display modes with updated QDCM calibration and PostBlendIGC/PostBlendGC blobs.
+• Added force-fullscreen support for display cutouts.
+
+🔒 Lock Screen
+
+• Added lock screen widgets with swipe-left access.
+• Added Android 17 Smartspace, improved with the latest updates.
+
+🎧 Audio & Bluetooth
+
+• Updated LHDC A2DP routing to match the stock dump audio policy.
+• Added per-device Bluetooth audio codec selection directly in Bluetooth device settings.
+• Added dynamic multi-audio focus.
+• Added per-app volume controls.
+• Added Volume panel tile.
+• Added Now Playing (disabled by default, will be removed next time).
+
+📳 Haptics
+
+• Improved vibrator handling and fixed composition/cancellation issues.
+
+📶 Connectivity
+
+• Improved Smart 5G.
+• Removed 6 GHz hotspot support as it was not working.
+• Reverted telephony null-service checks.
+
+🧭 Navigation
+
+• Added navigation bar height and length controls.
+• Added an option to hide the navigation IME bar.
+• Improved navigation and volume controls throughout Settings.
+
+⚙️ System & UI
+
+• Added split notification shade support in landscape.
+• Added App Lock.
+• Added Game Space.
+• Added BCR (GApps build only).
+• Dropped Per App Refresh Rate.
+
+👥 App Cloning
+
+• Added App Cloning support and improved cloned-app handling across the system.
+• Fixed cloned apps not appearing in the app drawer.
+• Fixed duplicate Google apps when using app clone in GMS builds.
+
+🚀 Launcher
+
+• Added icon pack support.
+
+🧹 Vanilla & Apps
+
+• Added extra Pixel clocks.
+• Switched to LineageOS Dialer.
+• Switched to LineageOS Gallery.
+
+🛠 Device & Stability
+
+• Removed the Xiaomi DisplayFeature dependency.
+• Device tree cleanup and misc improvements.
+• Improved overall system stability and performance.
+
+
+==================================================
+🚀 26 September 2026
+==================================================
+
+🎧 LHDC
+
+• Fixed LHDC Bluetooth audio routing.
+• Added aptX Adaptive R2.2 support.
+
+📳 Haptics
+
+• Added proper primitive vibration effects for marble.
+• Improved vibration effects, intensity and double-click handling.
+• Added fallback support for missing effects.
+
+🖥 AOD & Refresh Rate
+
+• Fixed refresh-rate stutter when unlocking from AOD / Doze / screen-off.
+• Improved refresh-rate switching when waking the display.
+• Fixed AOD brightness/dimming issues.
+• Updated the display driver to prevent incorrect AOD state handling and related black-screen issues.
+
+🔒 Stability
+
+• Fixed a deadlock that could cause freezes/reboots.
+• Improved screen-on/off stability.
+• Added an attempted fix for the black/unresponsive screen after ending audio/WhatsApp calls.
+
+⚙️ SystemUI & General
+
+• Added Advanced Restart.
+• Added Network Traffic indicator.
+• Added Black theme for Dark Mode.
+• Improved Wi-Fi tile and power-menu behavior.
+• Added mobile-data confirmation with "Don't ask again".
+• Added in-call vibration options for call connected, disconnected and call waiting.
+• Updated the sidebar / freeform experience.
+• Updated relevant system packages.
+
+🎥 Screen Recording
+
+• Added FPS limit support.
+• marble configured for 120 FPS.
+
+🧹 Vanilla Only
+
+• LineageOS Contacts & ContactsProvider
+• LineageOS Messaging
+• LineageOS LatinIME
+• LineageOS Chromium WebView
+• Removed QuickSearchBox
+• Vanilla-specific filesystem configuration
+
+
+==================================================
+🚀 13 September 2026
+==================================================
+
+🐧 Kernel
+
+• Updated to Linux 5.10.269 (merged upstream android12-5.10-lts).
+• Kernel build: 5.10.269-calcite-aa10e74ea5-mbe080198-d61ff9bf4
+• KernelSU updated to v3.3.0.
+• Enabled additional TCP congestion control algorithms, Westwood set as default.
+• Added custom kernel identity override (hides real kernel version from apps/games that block on it).
+
+🔓 microG
+
+• microG support integrated for a Google-services-free build option.
+• Aurora Store set as default app installer (required for in-app updates).
+• Fixed boot crash when microG is installed without a required permission.
+• Fixed microG location services getting stuck (network + fused location now reliable).
+• microG included by default in vanilla builds.
+• Dialer from Penguin OS for microG.
+• Vanilla builds include: Etar (Calendar), Twelve (Music), Jelly (Browser), Glimpse (Gallery), ExactCalculator, Recorder, DeskClock.
+
+✨ General
+
+• Sidebar support for quick access to floating apps.
+• Face unlock support added.
+• Smart 5G stays active during games instead of dropping to a slower connection.
+• Fixed 64MP camera photo corruption and other camera stability issues.
+• New system fonts and rebuilt font engine for smoother theming.
+• High brightness mode allowed without time limit; fixed AOD wake glitches.
+• Three-finger swipe to screenshot and double-tap to sleep.
+• Redesigned charging animation, now used for wired and wireless charging.
+• New boot animation.
+• High touch-polling rate toggle added (auto-disabled on battery saver).
+• NTFS drive support added.
+• Fixed dual-SIM signal icons and improved 5G signal bar accuracy.
+• Disabled LHDC Bluetooth codec (was causing connection crashes).
+• Blur effects enabled on more UI surfaces and the lock screen.
+• Misc performance and stability tuning.
