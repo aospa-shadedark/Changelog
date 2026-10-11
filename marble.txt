@@ -3,6 +3,52 @@ Xiaomi POCO F5 (marble)
 Maintainer: ShadeDark
 
 ==================================================
+🚀 11 October 2026 — FINAL UPDATE
+==================================================
+
+⚠️ End of Life (EOL)
+
+● This is the final AOSPA Calcite update for POCO F5 (marble) from me.
+● The ROM is now EOL and no further updates are planned and no support as well.
+
+🔒 Android Security
+
+● Merged AOSP Android 17.0.0.r2 with the October 2026 security patch.
+● Updated the Android security patch string to October 2026.
+
+🚀 Launcher
+
+● Smoother scrolling and scaling animations for Recents task cards.
+● Improved transitions between Home, Recents and the app drawer.
+● Fixed potential crashes and glitches during app-switch animations.
+● Improved the animation when opening search in the app drawer.
+● Added hidden and protected app management, with an updated Trust Apps screen.
+● Removed icon pack support.
+
+⚙️ System & Device
+
+● Enable More Blur UI
+● Improved refresh-rate handling during Doze power-on and transmit states.
+● Changed the skin-temperature sensor source from `xo-therm` to `quiet_therm`.
+● Removed Now Playing.
+
+🐧 Kernel
+
+● Merged the latest Android Common Kernel changes from `android12-5.10-lts`.
+● Merged `ASB-2026-10-05_12-5.10` (October 2026 Android Security Bulletin kernel updates).
+
+📦 Vanilla Builds Only
+
+● Replaced Gallery2 with Canvas Gallery.
+● Replaced LineageOS Dialer with crDroid Dialer.
+
+🐞 Known Issues
+
+● Recent panel: last cards may show square edges with many apps open (visual only).
+● Lockscreen: if the clock time looks wrong, change the clock style.
+● If you face any issues, flash the previous build.
+
+==================================================
 🚀 05 October 2026
 ==================================================
 
