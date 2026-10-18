@@ -3,6 +3,43 @@ Xiaomi POCO F5 (marble)
 Maintainer: ShadeDark
 
 ==================================================
+⚠️ BUILD NOTICE & CHANNEL RULES
+==================================================
+
+● Personal Build: This is a personal build shared as-is. Flash at your own discretion — use it or leave it.
+● No Support: This build is completely unsupported and the ROM remains EOL. Bug fixing is not a priority, and feature requests or ETAs will be ignored.
+● Community Discussion Only: If you have questions or run into anything, discuss it and ask fellow members in the group.
+● Strictly No DMs or Tags: Do not tag or DM me for support or unwanted reasons. Violating this will result in an instant ban.
+
+
+==================================================
+🚀 19 October 2026
+==================================================
+
+🔄 CLO Update
+
+● Updated system repositories to `LA.QSSI.17.0.r1-11700-qssi.0`.
+
+🚀 Launcher
+
+● Fixed Recents task cards showing square corners by properly syncing corner radius during scrolling and scaling.
+● Fixed app-opening animation scaling and pivot alignment when launching side cards from Recents.
+
+⚙️ System & UI
+
+● Implemented OLED burn-in protection for the status bar and navigation bar with corrected pixel-shift direction logic.
+● Redesigned per-app volume controls to appear as clean inline pills directly inside the volume dialog.
+● Updated the per-app volume icon with a new layered stack design and removed the unused app volume panel route.
+● Fixed the keyboard (IME) switcher icon remaining visible even when disabled in Settings.
+
+🎧 Audio & Connectivity
+
+● Fixed Bluetooth call audio routing to the internal phone speaker on aptX Voice devices (such as car head units) by disabling the broken codec.
+● Updated Wi-Fi HAL firmware roaming configuration from `diting` OS3.0.6.0.VLFMIXM.
+● Migrated DTMF and CSP telephony configurations to CarrierConfig and dropped deprecated overlays.
+
+
+==================================================
 🚀 11 October 2026 — FINAL UPDATE
 ==================================================
 
