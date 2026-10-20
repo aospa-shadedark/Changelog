@@ -13,6 +13,21 @@ Maintainer: ShadeDark
 
 
 ==================================================
+🚀 20 October 2026
+==================================================
+
+● Disabled aptX Adaptive ALS profile switching.
+● Fixed screen shifting during AOD burn-in protection, keeping the display properly aligned.
+● Updated marble-kernel to 5.10.269-calcite-ecf30b11f1-ma71cee43-d3c821dc3.
+● Updated KernelSU to v3.3.1.
+● Fixed Smartspace date, alarm, and lockscreen card behavior.
+● Fixed toast theming and background colors.
+● Fixed secondary-user backup handling when the system user is locked.
+● Fixed external storage access for secondary users when the system user is locked.
+● Improved font configuration to respect system font settings.
+
+
+==================================================
 🚀 19 October 2026
 ==================================================
 
