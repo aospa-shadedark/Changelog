@@ -13,6 +13,121 @@ Maintainer: ShadeDark
 
 
 ==================================================
+🚀 29 October 2026
+==================================================
+
+📱 Device & Hardware (POCO F5 / marble & sm8450-common)
+
+● Thermal Management: Fixed default thermal profile to start in Normal mode instead of Gaming mode to stop idle overheating.
+  ↳ Set default profile to 0 (normal) instead of 20 in ThermalUtils.kt.
+● Battery & Scrolling: Tuned touch boost to restrict boost exclusively to Silver (efficiency) cores, significantly reducing active battery drain during everyday scrolling.
+  ↳ Patched init.xiaomi_taro.perf.rc to prevent Gold/Prime core wakeups on touch events.
+● Adreno GPU Driver: Updated GPU driver stack to V@0863.1 with Vulkan 1.4 support and modern compiler libraries.
+  ↳ Pinned LA.VENDOR.14.3.4.11.00.00.1126.555 (from RayBan Meta) with libOpenCL_adreno & libadreno_compiler_cl; dEQP level 2025-03-01.
+● Status Bar Dimensions: Restored status bar dimension overlays containing cutout bounds, eliminating layout clipping in apps querying internal system resources.
+  ↳ Restored cutout-aware status_bar_height, status_bar_height_portrait, and status_bar_height_landscape dimension overlays.
+● Doze Support: Overrode platform Doze mode configurations for improved ambient display handling.
+  ↳ Overrode config_dozeAlwaysOnDisplayAvailable in device overlays.
+● Sepolicy & Cleanups: Allowed system_server access to Snapdragon services, silenced audit spam, declared Dolby Vision HIDL, and removed dead imports.
+  ↳ Allowed vendor_hal_snapx_service, added dvs HIDL declaration in dolby-vision, and dropped adreno/s tree imports.
+
+📶 Telephony, 5G & Connectivity
+
+● 5G SA Stability: Fixed mobile data stalling and throughput drops during idle periods on 5G Standalone networks.
+  ↳ Disabled RF chain sleep during data gaps via persist.vendor.radio.add_power_save=0.
+● 5G Throughput: Mitigated CPU spikes and interrupt thrashing during gigabit 5G downloads.
+  ↳ Configured Qualcomm Data Filter (DF) packet aggregation and enabled DPM Traffic Control Module (TCM=2).
+● Telephony & Messaging: Fixed incoming SMS delivery failures and updated carrier configurations.
+  ↳ Updated CarrierConfig from Pong B4.1 and added qcril-database migration to disable poweron_opt.
+● Bluetooth LE Audio Coexistence: Fixed controller scheduling conflicts and input lag when using Bluetooth LE audio alongside wireless input devices.
+  ↳ Set LE ISO connection intervals to 24/40 (30–50ms) to ensure HOGP+CIS coexistence slack.
+
+🎧 Sound, Xiaomi Dolby & Bluetooth Audio
+
+● VoIP Audio Routing: Fixed VoIP calls (WhatsApp, Telegram, Discord) routing voice through the earpiece while speakerphone was enabled.
+  ↳ Restored PAL default priorities (voice call: 1, VoIP: 2) so VoIP streams are no longer trapped on handset endpoints when media streams close.
+● Unlocked Audio Recording: Completely removed system-level audio recording restrictions for internal capture.
+  ↳ Removed recording restrictions across frameworks/base and frameworks/av, enabling full internal audio capture in third-party recorders.
+● aptX Adaptive Audio: Synchronized high-resolution audio offload states and fixed low-latency mode switching.
+  ↳ Synchronized aptX Adaptive mode between Bluetooth metadata and DSP offload; fixed mode propagation and ALS switching.
+● Audio Volume Safety: Disabled automatic safe media volume warnings and volume dampening.
+  ↳ Disabled safe media volume enforcement to prevent unwanted headphone volume throttling.
+● Xiaomi Dolby M3E Redesign: Complete UI overhaul built around Material 3 Expressive guidelines, dynamic Monet palettes, and tactile haptic sliders.
+  ↳ Converted UI to M3 Expressive tokens with fluid motion schemes and SEGMENT_TICK slider haptic feedback.
+● 20-Band Pro Equalizer: Added an optional high-precision 20-band graphic equalizer alongside the standard graphic EQ.
+  ↳ Real-time frequency response curve rendering with draggable node controls and band adjustments.
+● Advanced Acoustic Tuning: Fine-grained per-profile controls for bass enhancement, virtualizer surround, and dialogue clarity.
+  ↳ Exposed per-profile advanced DSP tuning parameters and unified first-use guidance.
+● Per-App Audio Profiles: Audio profiles now switch automatically based on the foreground application.
+  ↳ Integrated background app detection with Usage Access verification and Quick Settings tile status synchronization.
+● Preset Portability: Full preset portability with custom user icons and visual artwork.
+  ↳ Added JSON preset import/export, widened preset selection carousels, and safeguarded pending transfers against process resets.
+● Audio Core & Codecs: Modernized audio stack blobs, restored missing codecs, and enabled software DSP on high-res Bluetooth.
+  ↳ Updated blobs to Nuwa OS3.0.303.0.WMBMIXM, restored AC-4 codec, registered software DAP on LHDC routes, and fixed Voice profile ID remapping.
+
+🎮 Pentas Suite (New Game & Video Overlay)
+
+● Complete GameSpace Replacement: Fully migrated system, vendor, and manifest from legacy GameSpace to the Pentas suite.
+  ↳ Shifted manifest and vendor configurations to Pentas; bound Pentas sessions directly from GameSpaceService.
+● Floating Sidebar & Freeform Rail: Quick-access floating edge bar with a scrollable 20-app shortcut rail supporting freeform windowing.
+  ↳ Integrated LMOFreeform launching across the rail; configurable idle handle opacity.
+● Live Telemetry HUD: Real-time on-screen metrics for system diagnostics without external monitoring apps.
+  ↳ In-place expanding metric tiles reading live FPS, CPU load, and hardware GPU load directly from the gpubusy sysfs node.
+● In-Game Call Management: Floating in-game call overlay with one-tap Answer, Decline, and Auto-Speakerphone.
+  ↳ Keeps CallOverlay active during active gameplay while routing audio strictly through system CallPolicy.
+● Distraction-Free Gaming: Non-intrusive Danmaku scrolling notification banners and accidental touch protection.
+  ↳ Filtered Danmaku banners for popping alerts only; enforced platform gesture navigation lock and three-finger screenshot lock in game.
+● Hardware & Sound Integration: Direct sound effects panel and device-specific hardware optimization.
+  ↳ Integrated Xiaomi Dolby effect controls inside the overlay panel; mapped sm8450 thermal configs and TouchFeature HIDL.
+
+🎨 SystemUI & Quick Settings
+
+● QS Tile Shapes: Added support for circular Quick Settings tiles with adjusted padding and dimensions.
+  ↳ Added toggle and dimension resources for circular QS tile backgrounds [1/2 & 2/2].
+● Brightness Slider Customization: Added rounded brightness slider styling and placement flexibility.
+  ↳ Added toggle for round slider styling and switch for top vs. bottom slider placement in QS/QQS [1/2 & 2/2].
+● Auto-Brightness Controls: Added direct auto-brightness toggle in the slider and minimal brightness percentage limiting.
+  ↳ Added toggle icon inside slider track and minimal percentage limiter to prevent the screen from going pitch black [1/2 & 2/2].
+● Preferred Network Tile: Introduced Quick Settings tile to switch mobile network modes on the fly.
+  ↳ Added PreferredNetworkTile with automatic voice-capable checks to disable cleanly on Wi-Fi tablets.
+● Heads Up Notifications: Added compact Heads Up Notification style and a master switch to toggle heads up notifications on or off.
+  ↳ Implemented compact HUN pill layout [1/2 & 2/2] and global notification toggle in Settings.
+● Lockscreen & Scrim Fixes: Fixed charging text flicker, AOD transitions, and secure lockscreen security.
+  ↳ Fixed KeyguardIndication charging info glitches on lockscreen/AOD; forced behind scrim alpha to 0 on unlock; added toggle to hide power menu on locked devices.
+
+🔤 Typography, Settings & Display
+
+● M3 Expressive Font Picker: Redesigned font picker featuring live typography previews and integrated custom user font installation.
+  ↳ Added Material 3 Expressive font selection UI and user TTF/OTF installer in Settings.
+● Runtime Font Switching: Change fonts across the entire system instantly without requiring reboots.
+  ↳ Dynamic font engine repoints Typeface placeholders and propagates updates to system services on the fly.
+● System Typography Fixes: Modernized framework typography to respect user font selections across the board.
+  ↳ Fixed variable-* weight variants, resolved TextView typeface resets, guarded clearUpdates, and scoped fs-verity font overrides.
+● Per-App Volume & Settings: Unified per-app configuration screens and volume styling.
+  ↳ Created BasePerAppConfigFragment with deduplication and matched per-app volume pills to primary slider styling.
+● Refresh Rate Manager: Integrated comprehensive refresh rate control with visual display illustrations and battery saver overrides.
+  ↳ Added framework RefreshRateManager [1/2 & 2/2], display preview illustrations, and allowed disabling 60Hz lowering in Battery Saver.
+
+🔒 Privacy, Security & Firewall
+
+● Per-App Network Firewall: Granular control to allow or block individual apps from Cellular, Wi-Fi, and VPN network access.
+  ↳ Migrated firewall policy backend to POLICY_REJECT_ALL and added status bar indicator icons for network-blocked apps.
+● Privacy Hardening: Concealed sensitive hardware identifiers across system menus and diagnostic protocols.
+  ↳ Masked Wi-Fi and Bluetooth MAC addresses in About Phone; removed sensitive positioning data from SUPL requests.
+● Multi-User Security: Fixed storage access and secondary user stability when the device is locked.
+  ↳ Resolved secondary user crashes and external storage access exceptions when the primary user is credential-locked.
+● VPN Upstreams: Added setting to allow Wi-Fi hotspot tethering to utilize active VPN upstream connections.
+  ↳ Implemented per-UID VPN lockdown policies and tethering upstream forwarding rules.
+
+🛠️ Core System, Recovery & Launcher
+
+● Sideload Partition Auto-Grow: Fixed recovery sideload failures caused by dynamic partition size mismatches when flashing over different super partition layouts.
+  ↳ Added liblp GrowBlockDevicesToLiveSize and updated update_engine in recovery to automatically raise recorded super size to the physical device size, eliminating ErrorCode 7 (kInstallDeviceOpenError).
+● Launcher3 Optimization: Smoother task card animations when navigating between Recents and home.
+  ↳ Bypassed redundant fullscreen parameter updates during overview scaling animations.
+
+
+==================================================
 🚀 20 October 2026
 ==================================================
 
